@@ -9,6 +9,19 @@ sub new {
 };
 
 sub group_by_user {
+    my $self = shift;
+    my $obj={};
+    my $user;
+    my $value;
+    for(my $i=0 ; $i < scalar(@{$self->{logs}}) ; $i++){
+        $user = $self->{logs}->[$i]->{user};
+        if(defined$user){
+            $value = $self->{logs}->[$i];
+            push(@{$obj->{$user}} , $value);
+            delete($self->{logs}->[$i]->{user});
+        }
+    }
+    return $obj;
 }
 
 sub count_error {
