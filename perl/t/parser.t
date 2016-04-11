@@ -2,6 +2,7 @@ use strict;
 use warnings;
 
 use Test::More;
+use Test::Pretty;
 
 use_ok 'Parser';
 
